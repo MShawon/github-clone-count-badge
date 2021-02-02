@@ -12,8 +12,8 @@ This is a clone count badge shows 14 days clone statistics of a GitHub repositor
 * Then shields.io dynamic badge will parse this **clone.json** file to show the clone count.
 * GitHub actions will run every 8 hours.
 
-## Setup
-1) Create a GitHub action to use this workflow and save this as clone.yml.
+## Setup (~5 minute setup)
+1) Create a new workflow from the `Actions` tab of your repository and paste the following.
 ```yaml
 name: GitHub Clone Count for 14 days at every 8 hours
 

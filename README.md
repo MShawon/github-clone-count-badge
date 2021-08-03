@@ -57,7 +57,7 @@ jobs:
 
 ```
 2) To use this, you will need a personal access token. See this https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token to get one.
-3) Next, add action secrets to this repository like https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository this. Remember **SECRET_TOKEN** must be the secret name. And the value will be **personal access token**.  
+3) Next, add action secrets to this repository like https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository this. Remember `SECRET_TOKEN` must be the secret name. And the value will be the **personal access token** you just generated.  
 
 ## Usage
 Replace `<url>` with clone.json url.

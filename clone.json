@@ -4,7 +4,7 @@
   "clones": [
     {
       "timestamp": "2021-12-12T00:00:00Z",
-      "count": 5,
+      "count": 4,
       "uniques": 3
     },
     {
@@ -69,7 +69,7 @@
     },
     {
       "timestamp": "2021-12-25T00:00:00Z",
-      "count": 5,
+      "count": 6,
       "uniques": 4
     }
   ]

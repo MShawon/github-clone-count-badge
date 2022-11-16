@@ -78,10 +78,15 @@ jobs:
             -H "Content-Type: application/json" \
             -d @post_clone.json https://api.github.com/gists/${{ steps.set_id.outputs.GIST }} > /dev/null 2>&1
 
+          shields="https://img.shields.io/badge/dynamic/json?color=success&label=Clone&query=count&url="
+          url="https://gist.githubusercontent.com/${{ github.actor }}/${{ steps.set_id.outputs.GIST }}/raw/clone.json"
+          repo="https://github.com/MShawon/github-clone-count-badge"
+          echo "----- HERE YOUR BADGE LINK -----"
+          echo "Markdown: [![GitHub Clones]($shields$url&logo=github)]($repo)"
+          echo "HTML: <a href='$repo'><img alt='GitHub Clones' src='$shields$url&logo=github'></a>"
+          echo "--------------------------------"
+          ### v Cut this code if you don't want to create a new file if CLONE.md isn't here
           if [ ! -f CLONE.md ]; then
-            shields="https://img.shields.io/badge/dynamic/json?color=success&label=Clone&query=count&url="
-            url="https://gist.githubusercontent.com/${{ github.actor }}/${{ steps.set_id.outputs.GIST }}/raw/clone.json"
-            repo="https://github.com/MShawon/github-clone-count-badge"
             echo ''> CLONE.md
             echo '
             **Markdown**
@@ -101,7 +106,8 @@ jobs:
             git config --global user.email "action@github.com"
             git commit -m "create clone count badge"
           fi
-
+          ### ^
+           
       - name: Push
         uses: ad-m/github-push-action@master
         with:

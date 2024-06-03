@@ -12,9 +12,10 @@ This clone count badge shows **more than 14 days** of clone statistics of a GitH
 * This action will run every 24th hours to update clone.json with the latest data. Unfortunately, GitHub API allows users to show only the last 14 day's clone data. But this badge will show all the statistics from the day you implement this action.
 * **clone.json** posted on https://gist.github.com/ will act as a database.
 * Then shields.io dynamic badge will parse this **clone.json** file to show the clone count.
+* Clone count badge is in **CLONE.md** file
 
 ## Setup (~5 minute setup)
-1) Create a new workflow from the `Actions` tab of your repository and paste the following.
+1) [Create a new workflow](https://docs.github.com/en/actions/quickstart#creating-your-first-workflow) from the `Actions` tab of your repository. Name the file `clone.yml` and paste the following:
 ```yaml
 name: GitHub Clone Count Update Everyday
 
@@ -108,14 +109,23 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
 ```
-2) But to use this, you will need a personal access token. See this https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token to get one. And make sure to select the following scopes
+2) But to use this, you will need a personal access token. See [this docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) to get one. And make sure to select the following scopes:
 
-<p align='center'><img src='scopes.png'></p>
+<p align='center'><img src='scopes.png' width='90%'></p>
 
-3) Next, add action secrets to this repository like https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository this. Remember `SECRET_TOKEN` must be the secret name. And the value will be the **personal access token** you just generated.  
+3) Next, add action secrets to this repository like [this docs](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions?tool=webui#creating-secrets-for-a-repository). Remember `SECRET_TOKEN` must be the secret name. And the value will be the **personal access token** you just generated.  
 
 <p align='center'><img src='token.png' width='90%'></p>
 
+4) Grant `Read and write permissions` to the workflow to add **CLONE.md** file to your repository. See [this docs](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#configuring-the-default-github_token-permissions).
+
+<p align='center'><img src='permissions.png' width='90%'></p>
+
 ## Badge Usage
 
-Once you set it up correctly and the action is run for the very first time, the action will automatically create a new gist named **clone.json** in your account. But you don't know the gist link yet that the shields.io badge needs to parse. So a **CLONE.md** file will be uploaded to your repository's default branch which will contain the code required to add to your README. [action will create CLONE.md every time if not found]
+Once you set it up correctly and the action is run for the very first time, the action will automatically create a new gist named **clone.json** in your account.
+
+But you don't know the gist link yet that the shields.io badge needs to parse.
+So a **CLONE.md** file will be uploaded to your repository's default branch which will contain the code required to add to your README.
+
+[action will create CLONE.md every time if not found]
